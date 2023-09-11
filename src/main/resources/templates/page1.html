@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Page 1<</title>
+</head>
+
+<body>
+
+<div>
+    Mensaje: <span th:text="${message}"></span>
+</div>
+
+<a href="page2">Go to Page2, User Profile</a>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign out"/>
+</form>
+
+</body>
+</html>
