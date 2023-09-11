@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="fragments :: html_head(pageTitle='Index - Home')" />
+<body>
+<div class="container text-center">
+	<div><h1>Welcome to Home Page. This page is not secure</h1></div>
+	<div>
+		<br/>
+		<h4><a th:href="@{/login}">Login</a></h4>
+	</div>
+	<div>
+		<a href="page1">Go to Page1, is secured, login before</a>
+	</div>
+	<div>
+		<a href="page2">Go to Page2, is secured, login before</a>
+	</div>
+</div>
+</body>
+</html>
