@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
+//@EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
 
 	@Override
@@ -18,12 +19,23 @@ public class MvcConfig implements WebMvcConfigurer {
 
 	}
 
-//	@Bean
-//	public ViewResolver viewResolver() {
-//		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//		viewResolver.setPrefix("/templates/");
-//		viewResolver.setSuffix(".html");
-//		return viewResolver;
-//	}
+	@Bean
+	public ViewResolver viewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/templates/");
+		viewResolver.setSuffix(".html");
+		return viewResolver;
+	}
+
+//@Override
+//public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry
+//        .addResourceHandler("/templates/**")
+//        .addResourceLocations("classpath:/templates/")
+//        .setCachePeriod(3600)
+//        .resourceChain(true)
+//        .addResolver(new PathResourceResolver());
+//        }
+
 
 }

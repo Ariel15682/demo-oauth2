@@ -1,5 +1,6 @@
-package com.example.entities;
+package com.example.persistence.entities;
 
+import com.example.persistence.entities.Role;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +24,7 @@ public class User {
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id")
 			)
-	private Set<Role> roles = new HashSet<>(); 
+	private Set<Role> roles = new HashSet<>();
 
 	public Long getId() {
 		return id;

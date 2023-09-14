@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.User;
@@ -22,11 +23,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration
 @EnableWebSecurity
+@PropertySource("classpath:application.properties")
 public class WebSecurityConfig {
 
 //	private static final String[] AUTH_WHITE_LIST = {
@@ -51,28 +52,28 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-//	@Bean
-//	public DaoAuthenticationProvider authenticationProvider() {
-//		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//		authProvider.setUserDetailsService(userDetailsService());
-//		authProvider.setPasswordEncoder(passwordEncoder());
-//
-//		return authProvider;
-//	}
-//
-//    @Autowired
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider());
-//    }
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		authProvider.setUserDetailsService(userDetailsService());
+		authProvider.setPasswordEncoder(passwordEncoder());
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-				.inMemoryAuthentication()
-				.withUser("user1")
-				.password(passwordEncoder().encode("user1Pass"))
-				.authorities("ROLE_USER");
+		return authProvider;
 	}
+
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+//	@Autowired
+//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//		auth
+//				.inMemoryAuthentication()
+//				.withUser("user1")
+//				.password(passwordEncoder().encode("user1Pass"))
+//				.authorities("ROLE_USER");
+//	}
 
 	@Bean
 	protected SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {

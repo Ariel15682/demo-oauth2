@@ -1,7 +1,7 @@
 package com.example.services;
 
-import com.example.entities.Role;
-import com.example.entities.User;
+import com.example.persistence.entities.Role;
+import com.example.persistence.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

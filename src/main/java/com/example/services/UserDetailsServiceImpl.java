@@ -1,7 +1,7 @@
 package com.example.services;
 
-import com.example.entities.User;
-import com.example.repositories.UserRepository;
+import com.example.persistence.entities.User;
+import com.example.persistence.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,3 +1,6 @@
+OAuth2-GitHub-Click/README.adoc
+OAuth2-GitHub-Click/target/**
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
